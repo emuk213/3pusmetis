@@ -17,7 +17,7 @@ int main()
         vec1.push_back(temp);
         clean(temp);
     }
-    cout << setw(15) << left << "Surname" << setw(10) << left << "Name" << setw(5) << right << "Final average score" << endl;
+    cout << setw(15) << left << "Surname" << setw(10) << left << "Name" << setw(5) << right << "Final average score (vid)" << endl;
     for (int i = 0; i < n; i++)
         output(vec1.at(i));
 
