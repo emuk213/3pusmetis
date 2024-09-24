@@ -6,6 +6,9 @@
 #include <vector>
 #include <iomanip>
 #include <algorithm>
+#include <ios> //(del streamsize)
+#include <limits> //(del numeric limits)
+#include <cstdlib> //(del rand)
 
 using std::endl;
 using std::cout;
