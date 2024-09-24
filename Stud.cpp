@@ -10,7 +10,7 @@ double skaiciuotiNdVid(const vector <int>& nd){
 }
 double skaiciuotiNdMed(vector <int>& nd) {
     sort(nd.begin(), nd.end());
-    size_t size = nd.size();
+    int size = nd.size();
     if (size % 2 == 0) {
         return (nd[size / 2 - 1] + nd[size / 2]) / 2.0;
     }
