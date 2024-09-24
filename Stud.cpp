@@ -28,18 +28,37 @@ void input(Stud& Lok) {
     cout << "Input Name, Surname: ";
     cin >> Lok.vardas >> Lok.pavarde;
 
-	
-    cout << "Input ND scores (press non numeric symbol and ENTER to finish): ";
-    int paz;
+    cout << "Do you want randomized ND and Exam scores (0-no, 1-yes)?";
+    int ats;
+    cin >> ats;
+    if (ats == 0) {
+        cout << "Input ND scores (press non numeric symbol and ENTER to finish): ";
+        int paz;
 
-    while(cin >> paz) {
-        Lok.nd.push_back(paz);
+        while (cin >> paz) {
+            Lok.nd.push_back(paz);
         }
-    cin.clear();
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
-    cout << "Input Exam score: ";
-    cin >> Lok.egz;
+        cout << "Input Exam score: ";
+        cin >> Lok.egz;
+    }
+    else {
+        int ndSk = 1 + rand() % 10;
+        for (int i = 0; i < ndSk; i++) {
+            Lok.nd.push_back(1 + (rand() % 10));
+        }
+        //isveda random nd vec:
+        ///for (int i = 0; i < Lok.nd.size(); ++i) {
+          //  cout << Lok.nd[i] << " ";
+       // }
+        //cout << endl;
+        Lok.egz = 1 + (rand() % 10);
+        //isveda random egzamino rezultata:
+        ///cout << Lok.egz << endl;
+        
+    }
 }
 
 void output(Stud Lok) {
