@@ -16,6 +16,8 @@ using std::setw;
 using std::setprecision;
 using std::fixed;
 using std::sort;
+using std::streamsize;
+using std::numeric_limits;
 using std::string;
 using std::vector;
 
