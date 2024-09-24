@@ -4,15 +4,17 @@
 
 struct Stud {
 	std::string vardas, pavarde;
-	int nd, egz;
-	double vid;
+	vector <int> nd;
+	int egz;
+	double galutinisVid, galutinisMed;
 };
 
-void skaiciuotiGalutiniBala(Stud& Lok);
 void input(Stud& Lok);
+double skaiciuotiNdVid(const vector <int>& nd); //const uztrikrina, kad elementai nebus keiciami
+double skaiciuotiNdMed(vector <int>& nd); //elementus reikes surikiuoti
+void skaiciuotiGalutiniBala(Stud& Lok);
 void output(Stud Lok);
 void clean(Stud& Lok);
 
 #endif // STUD_H_INCLUDED
-
 
