@@ -28,12 +28,15 @@ void input(Stud& Lok) {
     cout << "Input Name, Surname: ";
     cin >> Lok.vardas >> Lok.pavarde;
 
-    Lok.nd.resize(4);
+	
+    cout << "Input ND scores (press non numeric symbol and ENTER to finish): ";
+    int paz;
 
-    cout << "Input 4 ND scores: ";
-    for (int i = 0; i < 4; ++i) {
-        cin >> Lok.nd[i];
+    while(cin >> paz) {
+        Lok.nd.push_back(paz);
         }
+    cin.clear();
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
     cout << "Input Exam score: ";
     cin >> Lok.egz;
