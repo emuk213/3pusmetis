@@ -3,4 +3,4 @@
 3. Stud.cpp faile surašytos visos funkcijos,
 4. Stud.h faile aprašyta struktūra ir funkcijų deklaracijos.
 
-Atsisiuntus projektą leisti jį iš aplanko "Project_v0.1".
+Atsisiuntus projektą leisti iš aplanko "Project_v0.1".
