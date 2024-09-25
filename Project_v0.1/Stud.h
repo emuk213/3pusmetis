@@ -10,6 +10,8 @@ struct Stud {
 };
 
 void input(Stud& Lok);
+void readStudTxt(const string& failoVardas, vector <Stud>& studentai);
+void outputTxt(const vector <Stud>& studentai);
 double skaiciuotiNdVid(const vector <int>& nd); //const uztrikrina, kad elementai nebus keiciami
 double skaiciuotiNdMed(vector <int>& nd); //elementus reikes surikiuoti
 void skaiciuotiGalutiniBala(Stud& Lok);
@@ -18,4 +20,3 @@ void outputMed(Stud Lok);
 void clean(Stud& Lok);
 
 #endif // STUD_H_INCLUDED
-
