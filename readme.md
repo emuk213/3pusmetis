@@ -4,3 +4,4 @@
 4. Stud.h faile aprašyta struktūra ir funkcijų deklaracijos.
 
 Atsisiuntus, projektą leisti iš aplanko "Project_v0.1".
+(Buvo padaryta klaida: failai sukelti atskirai, todėl dabar repozitorijoje yra failai ir aplankas su visu projektu, per aplanką ir reikia leisti projektą)
