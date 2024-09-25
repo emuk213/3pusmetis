@@ -8,9 +8,9 @@ int main()
     vector <Stud> vec1;
     Stud temp;
     int a, n;
-    cout << "Do you want Final score with vid or med? Type 0 for vid, 1 for med";
+    cout << "Do you want Final score with vid or med (0 - vid, 1 - med)?" << endl;
     cin >> a;
-    cout << "How many students do you have?";
+    cout << "How many students do you have?" << endl;
     cin >> n;
     for (int i = 0; i < n; i++) {
         cout << "Please input student data:" << endl;
