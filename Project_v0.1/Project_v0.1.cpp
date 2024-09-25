@@ -17,14 +17,26 @@ int main()
         cout << "Input file name" << endl;
         cin >> failoVardas;
         try {
-            readStudTxt(failoVardas, vec1); 
-        }
+            readStudTxt(failoVardas, vec1);
         catch (const runtime_error& e) {
             cerr << e.what() << endl;
-            return 1; 
+            return 1;  // Exit if there's an error
+        }
+        if (a == 0) {
+            cout << setw(15) << left << "Surname" << setw(10) << left << "Name" << setw(5) << right << "Final average score (vid.)" << endl;
+            for (Stud& student : vec1) {
+                skaiciuotiGalutiniBala(student);
+                outputVid(student);
+            }
+        }
+        else if (a == 1) {
+            cout << setw(15) << left << "Surname" << setw(10) << left << "Name" << setw(5) << right << "Final average score (med.)" << endl;
+            for (Stud& student : vec1) {
+                skaiciuotiGalutiniBala(student);
+                outputMed(student);
+            }
         }
 
-        outputTxt(vec1);
     }
     else if(b == 0){
         cout << "How many students do you have?" << endl;
