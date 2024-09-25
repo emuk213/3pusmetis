@@ -10,7 +10,7 @@ double skaiciuotiNdVid(const vector <int>& nd){
 }
 double skaiciuotiNdMed(vector <int>& nd) {
     sort(nd.begin(), nd.end());
-    int size = nd.size();
+    size_t size = nd.size();
     if (size % 2 == 0) {
         return (nd[size / 2 - 1] + nd[size / 2]) / 2.0;
     }
@@ -58,6 +58,60 @@ void input(Stud& Lok) {
         //isveda random egzamino rezultata:
         ///cout << Lok.egz << endl;
         
+    }
+}
+void readStudTxt(const string& failoVardas, vector <Stud>& studentai) {
+    ifstream inFile(failoVardas); //atidarome faila nuskaitymui
+    if (!inFile.is_open()) {
+        throw runtime_error("Nepavyko atidaryti failo: " + failoVardas);
+    }
+    string line;
+    getline(inFile, line);
+    while (getline(inFile, line)) {
+        istringstream iss(line);
+        Stud Lok1;
+        int score;
+
+        iss >> Lok1.pavarde >> Lok1.vardas;
+
+        Lok1.nd.clear();
+        for (int i = 0; i < 5; ++i) {
+            iss >> score;
+            Lok1.nd.push_back(score);
+        }
+
+        iss >> Lok1.egz;
+
+        studentai.push_back(Lok1);
+    }
+}
+
+
+
+
+void outputTxt(const vector<Stud>& studentai) {
+   
+    cout << setw(15) << left << "Pavarde"
+        << setw(15) << left << "Vardas"
+        << setw(30) << left << "Namu darbai"
+        << setw(10) << left << "Egzaminas" << endl;
+
+    cout << string(70, '-') << endl;
+
+    for (const auto& student : studentai) {
+       
+        cout << setw(15) << left << student.pavarde
+            << setw(15) << left << student.vardas;
+
+
+        for (size_t i = 0; i < student.nd.size(); ++i) {
+            cout << student.nd[i];
+            if (i < student.nd.size() - 1) {
+                cout << " ";
+            }
+        }
+
+        cout << setw(10) << right << student.egz << endl;
     }
 }
 
