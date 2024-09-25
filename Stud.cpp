@@ -61,8 +61,11 @@ void input(Stud& Lok) {
     }
 }
 
-void output(Stud Lok) {
+void outputVid(Stud Lok) {
 	cout << setw(15) << left << Lok.pavarde << setw(15) << left << Lok.vardas << setw(5) << setprecision(2) << fixed << right << Lok.galutinisVid << endl;
+}
+void outputMed(Stud Lok) {
+    cout << setw(15) << left << Lok.pavarde << setw(15) << left << Lok.vardas << setw(5) << setprecision(2) << fixed << right << Lok.galutinisMed << endl;
 }
 
 void clean(Stud& Lok) {
