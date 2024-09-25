@@ -71,6 +71,6 @@ void outputMed(Stud Lok) {
 void clean(Stud& Lok) {
 	Lok.vardas.clear();
 	Lok.pavarde.clear();
-	Lok.nd.clear(); //isvalo vektoriu
+	Lok.nd.clear();
 }
 
