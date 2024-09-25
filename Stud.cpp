@@ -28,7 +28,7 @@ void input(Stud& Lok) {
     cout << "Input Name, Surname: ";
     cin >> Lok.vardas >> Lok.pavarde;
 
-    cout << "Do you want randomized ND and Exam scores (0-no, 1-yes)?";
+    cout << "Do you want randomized ND and Exam scores (0-no, 1-yes)?" << endl;
     int ats;
     cin >> ats;
     if (ats == 0) {
