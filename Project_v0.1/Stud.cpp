@@ -25,72 +25,122 @@ void skaiciuotiGalutiniBala(Stud& Lok) {
 }
 
 void input(Stud& Lok) {
-    cout << "Input Name, Surname: ";
+    cout << "Input Name, Surname:" << endl;
     cin >> Lok.vardas >> Lok.pavarde;
 
-    cout << "Do you want randomized ND and Exam scores (0-no, 1-yes)?" << endl;
+    cout << "Do you want randomized ND and Exam scores (0 - no, 1 - yes)?" << endl;
     int ats;
-    cin >> ats;
-    if (ats == 0) {
-        cout << "Input ND scores (press non numeric symbol and ENTER to finish): ";
-        int paz;
-
-        while (cin >> paz) {
-            Lok.nd.push_back(paz);
+    try {
+        cin >> ats;
+        if (cin.fail() || (ats != 0 && ats != 1)) {
+            throw runtime_error("Error: wrong input");
         }
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        if (ats == 0) {
+            cout << "Input ND scores (press non numeric symbol and ENTER to finish):" << endl;
+            int paz;
 
-        cout << "Input Exam score: ";
-        cin >> Lok.egz;
+            while (cin >> paz) {
+                if (cin.fail() || (paz < 1 || paz > 10)) {
+                    throw runtime_error("Error: invalid ND input");
+                }
+                else {
+                    Lok.nd.push_back(paz);
+                }
+            }
+
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+            cout << "Input Exam score: ";
+            cin >> Lok.egz;
+            if (Lok.egz < 1 || Lok.egz > 10) {
+                throw runtime_error("Error: invalid Exam input");
+            }
+        }
+        else if (ats == 1) {
+            cout << "How many ND scores should program randomize?" << endl;
+            int ndSk;
+            cin >> ndSk;
+            if (cin.fail()) {
+                throw runtime_error("Error: invalid input");
+            }
+
+            for (int i = 0; i < ndSk; i++) {
+                Lok.nd.push_back(1 + (rand() % 10));
+            }
+            Lok.egz = 1 + (rand() % 10);
+            /*
+            //isveda random nd vec:
+            for (int i = 0; i < Lok.nd.size(); ++i) {
+               cout << Lok.nd[i] << " ";
+            }
+            cout << endl;
+            //isveda random egzamino rezultata:
+            cout << Lok.egz << endl;
+            */
+            
+        }
     }
-    else {
-        int ndSk = 1 + rand() % 10;
-        for (int i = 0; i < ndSk; i++) {
-            Lok.nd.push_back(1 + (rand() % 10));
-        }
-        //isveda random nd vec:
-        ///for (int i = 0; i < Lok.nd.size(); ++i) {
-          //  cout << Lok.nd[i] << " ";
-       // }
-        //cout << endl;
-        Lok.egz = 1 + (rand() % 10);
-        //isveda random egzamino rezultata:
-        ///cout << Lok.egz << endl;
-        
+    catch (exception& e) {
+        cerr << e.what() << endl;
+        exit(EXIT_FAILURE);
     }
 }
+
+
 void readStudTxt(const string& failoVardas, vector <Stud>& studentai) {
     ifstream inFile(failoVardas); //atidarome faila nuskaitymui
-    if (!inFile.is_open()) {
-        throw runtime_error("Nepavyko atidaryti failo: " + failoVardas);
-    }
-    string line;
-    getline(inFile, line);
-    while (getline(inFile, line)) {
-        istringstream iss(line);
-        Stud Lok1;
-        int score;
-
-        iss >> Lok1.pavarde >> Lok1.vardas;
-
-        Lok1.nd.clear();
-        for (int i = 0; i < 5; ++i) {
-            iss >> score;
-            Lok1.nd.push_back(score);
+    try {
+        if (!inFile.is_open()) {
+            throw runtime_error("Error: unable to open file: " + failoVardas);
         }
+        string line;
+        getline(inFile, line);
+        while (getline(inFile, line)) {
+            istringstream iss(line);
+            Stud Lok1;
+            int score;
 
-        iss >> Lok1.egz;
+            iss >> Lok1.pavarde >> Lok1.vardas;
 
-        studentai.push_back(Lok1);
+            Lok1.nd.clear();
+            while (iss >> score) {
+                Lok1.nd.push_back(score);
+            }
+            if (Lok1.nd.empty()) {
+                throw runtime_error("Error: no ND scores found in line: " + line);
+            }
+
+            Lok1.egz = Lok1.nd.back();
+            Lok1.nd.pop_back();
+
+            studentai.push_back(Lok1);
+
+        }
+    }
+    catch (exception& e) {
+        cerr << e.what() << endl;
+        exit(EXIT_FAILURE);
     }
 }
 
 
+void outputVid(Stud Lok) {
+	cout << setw(15) << left << Lok.pavarde << setw(15) << left << Lok.vardas << setw(5) << setprecision(2) << fixed << right << Lok.galutinisVid << endl;
+}
+void outputMed(Stud Lok) {
+    cout << setw(15) << left << Lok.pavarde << setw(15) << left << Lok.vardas << setw(5) << setprecision(2) << fixed << right << Lok.galutinisMed << endl;
+}
 
+void clean(Stud& Lok) {
+	Lok.vardas.clear();
+	Lok.pavarde.clear();
+	Lok.nd.clear();
+}
 
+/*
 void outputTxt(const vector<Stud>& studentai) {
-   
+
     cout << setw(15) << left << "Pavarde"
         << setw(15) << left << "Vardas"
         << setw(30) << left << "Namu darbai"
@@ -99,7 +149,7 @@ void outputTxt(const vector<Stud>& studentai) {
     cout << string(70, '-') << endl;
 
     for (const auto& student : studentai) {
-       
+
         cout << setw(15) << left << student.pavarde
             << setw(15) << left << student.vardas;
 
@@ -114,16 +164,4 @@ void outputTxt(const vector<Stud>& studentai) {
         cout << setw(10) << right << student.egz << endl;
     }
 }
-
-void outputVid(Stud Lok) {
-	cout << setw(15) << left << Lok.pavarde << setw(15) << left << Lok.vardas << setw(5) << setprecision(2) << fixed << right << Lok.galutinisVid << endl;
-}
-void outputMed(Stud Lok) {
-    cout << setw(15) << left << Lok.pavarde << setw(15) << left << Lok.vardas << setw(5) << setprecision(2) << fixed << right << Lok.galutinisMed << endl;
-}
-
-void clean(Stud& Lok) {
-	Lok.vardas.clear();
-	Lok.pavarde.clear();
-	Lok.nd.clear();
-}
+*/
