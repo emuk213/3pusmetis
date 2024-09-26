@@ -10,7 +10,9 @@
 #include <sstream> //del getline
 #include <ios> //(del streamsize)
 #include <limits> //(del numeric limits)
-#include <cstdlib> //(del rand)
+#include <cstdlib> //(del rand)??
+#include <stdexcept>
+#include <exception>
 
 using std::endl;
 using std::cout;
@@ -30,5 +32,7 @@ using std::vector;
 using std::runtime_error;
 using std::istringstream;
 using std::cerr;
+using std::exception;
+
 
 #endif // MYLIB_H_INCLUDED
