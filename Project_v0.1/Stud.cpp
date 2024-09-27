@@ -4,7 +4,7 @@
 double skaiciuotiNdVid(const vector <int>& nd){
     double sum = 0;
     for (int i = 0; i < nd.size(); i++) {
-        sum += nd[i];
+        sum += nd.at(i);
     }
     return sum / nd.size();
 }
@@ -12,10 +12,10 @@ double skaiciuotiNdMed(vector <int>& nd) {
     sort(nd.begin(), nd.end());
     size_t size = nd.size();
     if (size % 2 == 0) {
-        return (nd[size / 2 - 1] + nd[size / 2]) / 2.0;
+         return (nd.at(size / 2 - 1) + nd.at(size / 2)) / 2.0;
     }
     else {
-        return nd[size / 2];
+        return nd.at(size / 2);
     }
 }
 
@@ -101,7 +101,7 @@ void readStudTxt(const string& failoVardas, vector <Stud>& studentai) {
             Stud Lok1;
             int score;
 
-            iss >> Lok1.pavarde >> Lok1.vardas;
+           iss >> Lok1.vardas >> Lok1.pavarde;
 
             Lok1.nd.clear();
             while (iss >> score) {
