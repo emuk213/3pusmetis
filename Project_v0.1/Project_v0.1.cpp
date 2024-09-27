@@ -34,6 +34,9 @@ int main()
             
             if (a == 0) {
                 cout << setw(15) << left << "Surname" << setw(10) << left << "Name" << setw(5) << right << "Final average score (vid.)" << endl;
+                sort(vec1.begin(), vec1.end(), [](const Stud& a, const Stud& b) {
+                     return a.pavarde < b.pavarde;
+                 });
                 for (Stud& student : vec1) {
                     skaiciuotiGalutiniBala(student);
                     outputVid(student);
@@ -41,6 +44,9 @@ int main()
             }
             else if (a == 1) {
                 cout << setw(15) << left << "Surname" << setw(10) << left << "Name" << setw(5) << right << "Final average score (med.)" << endl;
+                sort(vec1.begin(), vec1.end(), [](const Stud& a, const Stud& b) {
+                    return a.pavarde < b.pavarde;
+                });
                 for (Stud& student : vec1) {
                     skaiciuotiGalutiniBala(student);
                     outputMed(student);
@@ -71,11 +77,17 @@ int main()
             }
             if (a == 0) {
                 cout << setw(15) << left << "Surname" << setw(10) << left << "Name" << setw(5) << right << "Final average score (vid.)" << endl;
+                sort(vec1.begin(), vec1.end(), [](const Stud& a, const Stud& b) {
+                    return a.pavarde < b.pavarde;
+                });
                 for (int i = 0; i < n; i++)
                     outputVid(vec1.at(i));
             }
             else if (a == 1) {
                 cout << setw(15) << left << "Surname" << setw(10) << left << "Name" << setw(5) << right << "Final average score (med.)" << endl;
+                sort(vec1.begin(), vec1.end(), [](const Stud& a, const Stud& b) {
+                    return a.pavarde < b.pavarde;
+                });
                 for (int i = 0; i < n; i++)
                     outputMed(vec1.at(i));
             }
