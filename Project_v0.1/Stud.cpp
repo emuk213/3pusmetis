@@ -100,15 +100,17 @@ void readStudTxt(const string& failoVardas, vector <Stud>& studentai) {
             istringstream iss(line);
             Stud Lok1;
             int score;
-            
+            string x;
+		
             iss >> Lok1.vardas >> Lok1.pavarde;
 
             Lok1.nd.clear();
-            while (iss >> score) {
+            while (iss >> x) {
+		    score = std::stoi(x);
                 Lok1.nd.push_back(score);
             }
             for (int i = 0; i < Lok1.nd.size(); i++) {
-                if (iss.fail() || (Lok1.nd.at(i) < 1 || Lok1.nd.at(i) > 10)) {
+                if (Lok1.nd.at(i) < 1 || Lok1.nd.at(i) > 10) {
                     throw runtime_error("Error: ND score must be between 1 and 10");
                 }
             }
@@ -122,6 +124,9 @@ void readStudTxt(const string& failoVardas, vector <Stud>& studentai) {
             studentai.push_back(Lok1);
 
         }
+    }
+    catch (const std::invalid_argument& e) {
+	    throw runtime_error("Error: ND score is a letter");
     }
     catch (exception& e) {
         cerr << e.what() << endl;
