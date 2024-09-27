@@ -89,7 +89,7 @@ void input(Stud& Lok) {
 
 
 void readStudTxt(const string& failoVardas, vector <Stud>& studentai) {
-    ifstream inFile(failoVardas); //atidarome faila nuskaitymui
+    ifstream inFile(failoVardas);
     try {
         if (!inFile.is_open()) {
             throw runtime_error("Error: unable to open file: " + failoVardas);
@@ -100,12 +100,17 @@ void readStudTxt(const string& failoVardas, vector <Stud>& studentai) {
             istringstream iss(line);
             Stud Lok1;
             int score;
-
-           iss >> Lok1.vardas >> Lok1.pavarde;
+            
+            iss >> Lok1.vardas >> Lok1.pavarde;
 
             Lok1.nd.clear();
             while (iss >> score) {
                 Lok1.nd.push_back(score);
+            }
+            for (int i = 0; i < Lok1.nd.size(); i++) {
+                if (iss.fail() || (Lok1.nd.at(i) < 1 || Lok1.nd.at(i) > 10)) {
+                    throw runtime_error("Error: ND score must be between 1 and 10");
+                }
             }
             if (Lok1.nd.empty()) {
                 throw runtime_error("Error: no ND scores found in line: " + line);
