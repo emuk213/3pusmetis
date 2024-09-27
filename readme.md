@@ -6,11 +6,13 @@
 Dabar jau prašo vartotojo pasirinkti atsitiktinai generuojamų namų darbų kiekį.
 Duomenis galima nuskaityti iš failo arba įvesti pačiam.
 Išimčių valdymas:
-	• visi "0", "1" atsakymai į užklausas nebūtų raidė ar kitas skaičius;
-	• įmanoma atidaryti tekstinį failą;
-	• tekstinio failo eilutėje yra įvestų namų darbų ar egzamino rezultatų;
-	• įvestas studentų ar atsitiktinai generuojamų namų darbų skaičius nėra raidė ar kitas simbolis;
-	• įvesti namų darbų ir egzamino rezultatas yra tarp 1 ir 10.
+* visi "0", "1" atsakymai į užklausas nebūtų raidė ar kitas skaičius;
+* įmanoma atidaryti tekstinį failą;
+* tekstinio failo eilutėje yra įvestų namų darbų ar egzamino rezultatų;
+* tekstiniame faile įvesti ND ir egzamino rezultatai yra tarp 1 ir 10;
+* įvestas studentų ar atsitiktinai generuojamų namų darbų skaičius nėra raidė ar kitas simbolis;
+* įvesti namų darbų ir egzamino rezultatas yra tarp 1 ir 10.
+Išvedimo duomenys surūšiuoti pagal pavardę.
 Papildomai užkomentuota yra funkcija, kuri išvestų iš tekstinio failo nuskaitytus duomenis patikrai. Taip pat užkomentuotos eilutės, kurios išvestų atsitiktinai sugeneruotus namų darbų ir egzamino rezultatus.
 
 
