@@ -10,7 +10,7 @@
 #include <sstream> //del getline
 #include <ios> //(del streamsize)
 #include <limits> //(del numeric limits)
-#include <cstdlib> //(del rand)??
+#include <cstdlib> //(del rand, exit)
 #include <stdexcept>
 #include <exception>
 
