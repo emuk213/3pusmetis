@@ -17,5 +17,3 @@ Išvedimo duomenys surūšiuoti pagal pavardę.
 Papildomai užkomentuota yra funkcija, kuri išvestų iš tekstinio failo nuskaitytus duomenis patikrai. Taip pat užkomentuotos eilutės, kurios išvestų atsitiktinai sugeneruotus namų darbų ir egzamino rezultatus.
 
 
-Atsisiuntus, projektą leisti iš aplanko "Project_v0.1".
-(Buvo padaryta klaida: failai sukelti atskirai, todėl dabar repozitorijoje yra failai ir aplankas su visu projektu, iš aplanko ir reikia leisti projektą)
